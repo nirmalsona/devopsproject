@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    
+    environment {
+        NODE_HOME = '/usr/local/bin/node'  // You can change this if your Node.js installation is in a different location.
+        PATH = "${NODE_HOME}:${env.PATH}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/<your-username>/hello-world-app.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                sh 'node index.js'
+            }
+        }
+    }
+}
+
