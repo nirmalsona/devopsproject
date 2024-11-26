@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the source code from the repository
+                git 'https://github.com/nirmalsona/devopsproject.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                // Simple build step, can be customized based on your project
+                echo 'Building project...'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Run tests here, for example:
+                echo 'Running tests...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Deploy the application here
+                echo 'Deploying application...'
+            }
+        }
+    }
+}
+
